@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Daily Prices Trial</title>
+    
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/dc.min.css" type="text/css" /> 
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="static/css/style.css" type="text/css" /> -->
+    
+    <script type="text/javascript" src="static/js/jquery-3.3.1.js"></script> 
+    
+    <script type="text/javascript" src="static/js/d3.min.js"></script>
+    <script type="text/javascript" src="static/js/crossfilter.min.js"></script>
+    <script type="text/javascript" src="static/js/dc.min.js"></script>
+    <script type="text/javascript" src="static/js/queue.min.js"></script>
+    <script type="text/javascript" src="static/js/graph.js"></script> 
+    
+</head>
+<body>
+    
+    <div>
+        <h3>Transmission Monthly</h3>
+        
+        <select id="selCountry">
+            <option value="CZ : Main" selected>CZ : Main</option>
+            <option value="SK : Main">SK : Main</option>
+            <option value="DE">DE</option>
+            <option value="AT">AT</option>
+            <option value="HU">HU</option>
+            <option value="PL">PL</option>
+        </select>
+        
+        <input type="button" onclick="(new data_preprocess());" value="ACTION">
+        
+        <div>
+            <div id="month-selector"></div>        
+        </div>
+        
+        <div>
+            <div id="price-avg-per-month"></div>
+            
+            <div id="impexp-total-per-month"></div>
+            
+            <div id="impexp-total-per-month2"></div>
+            
+            <div id="impexp-total-per-month-country"></div>
+        </div>
+        
+    </div>
+    
+    <!--
+    <div>
+        <h3>Transmission Monthly</h3>
+
+        <select id="selMonthM">
+            <option value="8">8</option>
+            <option value="9" selected>9</option>
+        </select>
+        
+        <input type="button" onclick="(new data_preprocess());" value="ACTION">
+        
+        <div>
+            <div id="month-selector"></div>        
+        </div>        
+        
+    </div>    
+    -->
+    
+    <!--
+    <div>
+        <h3>Transmission Daily</h3>
+
+        <select id="selMonthD">
+            <option value="8">8</option>
+            <option value="9" selected>9</option>
+        </select>
+        
+        <input type="button" onclick="(new data_preprocess());" value="ACTION">
+        
+        <div>
+            <div id="service-selector"></div>        
+            <div id="day-selector"></div>
+        </div>
+        
+    </div> 
+    -->
+    
+</body>
+</html>    
