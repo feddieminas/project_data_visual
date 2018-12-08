@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="static/css/dc.min.css" type="text/css" /> 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="static/css/style.css" type="text/css" /> -->
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
     
     <script type="text/javascript" src="static/js/jquery-3.3.1.js"></script> 
     
@@ -22,72 +22,57 @@
 </head>
 <body>
     
-    <div>
-        <h3>Transmission Monthly</h3>
-        
-        <select id="selCountry">
-            <option value="CZ : Main" selected>CZ : Main</option>
-            <option value="SK : Main">SK : Main</option>
-        </select>
-        
-        <input type="button" onclick="(new data_preprocess());" value="ACTION">
-        
+<main>
+    <section>
         <div>
-            <span id="price-avg-per-month"></span> <!--Min or Max -->
-        </div>
-        
-        
-        <div>
-            <div id="month-selector"></div>        
-        </div>
-        
-        
-        <div>
-            <!-- <div id="price-avg-per-month"></div> -->
+            <h3>Transmission Monthly</h3>
+                
+            <select id="selCountry">
+                <option value="CZ : Main" selected>CZ : Main</option>
+                <option value="SK : Main">SK : Main</option>
+            </select>
+                
+            <input type="button" onclick="(new data_preprocess());" value="ACTION">
+                
+            <div>
+                <span id="price-avg-per-month"></span> <!--Min or Max -->
+            </div>
+                
+            <div>
+                <div id="month-selector"></div>        
+            </div>
+                
+            <div>
+                <div id="impexp-total-per-month"></div>
+                <div id="impexp-total-per-month-country"></div>
+            </div>
             
-            <div id="impexp-total-per-month"></div>
+        </div>            
+    </section>
+        
+    <section class="daily">
+        <div>
+            <h3>Transmission Daily</h3>
+    
+            <div>
+                <div id="day-selector"></div>        
+            </div>
+
+            <div>
+                <div id="prices-composite-chart"></div>        
+            </div>            
+
+            <div>
+                <div id="ntc-scatter-chart"></div>                
+            </div>
             
-            <div id="impexp-total-per-month-country"></div>
-        </div>
-        
-    </div>
-    
-    <!--
-    <div>
-        <h3>Transmission Monthly</h3>
-
-        <select id="selMonthM">
-            <option value="8">8</option>
-            <option value="9" selected>9</option>
-        </select>
-        
-        <input type="button" onclick="(new data_preprocess());" value="ACTION">
-        
-        <div>
-            <div id="month-selector"></div>        
-        </div>        
-        
-    </div>    
-    -->
-    
-    <!--
-    <div>
-        <h3>Transmission Daily</h3>
-
-        <select id="selMonthD">
-            <option value="8">8</option>
-            <option value="9" selected>9</option>
-        </select>
-        
-        <input type="button" onclick="(new data_preprocess());" value="ACTION">
-        
-        <div>
-            <div id="service-selector"></div>        
-            <div id="day-selector"></div>
-        </div>
-        
-    </div> 
-    -->
+            <div>
+                <div id="cb-composite-chart"></div>                
+            </div>
+            
+        </div>         
+    </section>
+    </main>
     
 </body>
 </html>    
