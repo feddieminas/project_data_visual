@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Daily Prices Trial</title>
+    <title>Transmission Dashboard</title>
     
     <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="static/css/dc.min.css" type="text/css" /> 
@@ -32,17 +32,27 @@
                 <option value="SK : Main">SK : Main</option>
             </select>
                 
-            <input type="button" onclick="(new data_preprocess());" value="ACTION">
-                
+            <input id="countchg" type="button" value="ACTION">    
+            
+            <!--    
             <div>
+                <span id="country-name"></span>
                 <span id="price-avg-per-month"></span>
+            </div>
+            -->
+            
+            <div class="price-info-item">
+                <div class="key">
+                    <span id="country-name"></span>
+                </div>
+                <div class="value">
+                    <span id="price-avg-per-month"></span>
+                </div>
             </div>
                 
             <div>
                 <div id="month-selector"></div> 
             </div>
-            
-            <!-- <input type="button" onclick="(new retDropdownCF());" value="REDRAW"> -->
                 
             <div>
                 <div id="impexp-total-per-month"></div>
@@ -56,11 +66,49 @@
         <div>
             <h3>Transmission Daily</h3>
     
+            <!--
             <div>
                 <span id="price-avg-per-month-1"></span>
                 <span id="price-avg-per-month-2"></span>
                 <span id="price-avg-per-month-3"></span>
                 <span id="price-avg-per-month-4"></span>                
+            </div>
+            -->
+            
+            <div class="price-info-item">
+                <div class="key">
+                    <span id="country-name-1"></span>
+                </div>
+                <div class="value">
+                    <span id="price-avg-per-month-1"></span>
+                </div>
+            </div>
+            
+            <div class="price-info-item">
+                <div class="key">
+                    <span id="country-name-2"></span>
+                </div>
+                <div class="value">
+                    <span id="price-avg-per-month-2"></span>
+                </div>
+            </div>
+            
+            <div class="price-info-item">
+                <div class="key">
+                    <span id="country-name-3"></span>
+                </div>
+                <div class="value">
+                    <span id="price-avg-per-month-3"></span>
+                </div>
+            </div>            
+
+            <div class="price-info-item">
+                <div class="key">
+                    <span id="country-name-4"></span>
+                </div>
+                <div class="value">
+                    <span id="price-avg-per-month-4"></span>
+                </div>
             </div>
 
             <div>
@@ -71,7 +119,7 @@
             <div>
                 <div id="cb-composite-chart"></div>                
             </div>
-            
+
         </div>         
     </section>
     </main>
