@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/style.css" type="text/css" />
     
-    <script type="text/javascript" src="static/js/jquery-3.3.1.js"></script> 
+    <script type="text/javascript" src="static/js/jquery-3.3.1.js"></script>
     
     <script type="text/javascript" src="static/js/d3.min.js"></script>
     <script type="text/javascript" src="static/js/crossfilter.min.js"></script>
@@ -22,106 +22,190 @@
 </head>
 <body>
     
-<main>
-    <section>
-        <div>
-            <h3>Transmission Monthly</h3>
-                
-            <select id="selCountry">
-                <option value="CZ : Main" selected>CZ : Main</option>
-                <option value="SK : Main">SK : Main</option>
-            </select>
-                
-            <input id="countchg" type="button" value="ACTION">    
-            
-            <!--    
-            <div>
-                <span id="country-name"></span>
-                <span id="price-avg-per-month"></span>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid"> 
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Power Market OTE Transmission</a>
             </div>
-            -->
-            
-            <div class="price-info-item">
-                <div class="key">
-                    <span id="country-name"></span>
-                </div>
-                <div class="value">
-                    <span id="price-avg-per-month"></span>
-                </div>
-            </div>
-                
-            <div>
-                <div id="month-selector"></div> 
-            </div>
-                
-            <div>
-                <div id="impexp-total-per-month"></div>
-                <div id="impexp-total-per-month-country"></div>
-            </div>
-            
-        </div>            
-    </section>
-        
-    <section class="daily">
-        <div>
-            <h3>Transmission Daily</h3>
+        </div>    
+    </nav>
     
-            <!--
-            <div>
-                <span id="price-avg-per-month-1"></span>
-                <span id="price-avg-per-month-2"></span>
-                <span id="price-avg-per-month-3"></span>
-                <span id="price-avg-per-month-4"></span>                
-            </div>
-            -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12"> 
+                    <button id="btnInstr" type="button" class="btn btn-info btn-sm">Relative Info</button>
+                    <p id="Slider" class="text-secondary slideup text-justify">OTE region countries are CZ (Czech Republic), SK (Slovakia), HU (Hungary) and RO (Romania). Below we display information concerning <strong>CZ and SK main hubs for the months
+                    of August and September 2018</strong> provided by the ENTSOE transparency platform ftp server. <em>Transmission Monthly</em> produces the total sum and percent commercial schedule flows by power traders 
+                    from/to the main hub and its neigbouring countries. <em>Transmission Daily</em> produces on a daily basis the historical market prices, the available capacity and commercial schedules from/to the main hub and its neighboring countries.
+                    To reduce complexity, on line charts, the dashed lines refer to the Month of August and regular lines to the month of September.Below, at the daily section, the title format is as follows 
+                    <u>[Month,Day,Exports or Imports or null for Prices,Quantity or Price]</u> equals [9,3,E: 1700]. Please note that Cross Filtering applies to all Quantities and Prices only when Exports are clicked.</p>
+                </div> 
+            </div>     
+        </div>    
+    </header>
+    
+    <main>
+        <section class="outersection">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12"> 
+                        <h1>OTE Hub Selector</h1>
+                        <select id="selCountry">
+                            <option value="CZ : Main" selected>CZ : Main</option>
+                            <option value="SK : Main">SK : Main</option>
+                        </select>
+                        <button id="countchg" type="button" class="btn btn-primary btn-sm">Display Info</button>
+                    </div>
+                </div>
+                
+                <div class="row"> 
+                    <div class="col-xs-12 col-sm-12">
+                        <h2>Month Selector</h2>
+                        <div id="month-selector"></div> 
+                    </div>  
+                </div>
+            </div>     
+        </section> 
             
-            <div class="price-info-item">
-                <div class="key">
-                    <span id="country-name-1"></span>
-                </div>
-                <div class="value">
-                    <span id="price-avg-per-month-1"></span>
-                </div>
+        <section class="outersection">   
+            <div class="container">
+                <div class="row"> 
+                    <div class="col-xs-12 col-sm-12">    
+                        <h3>Transmission Monthly</h3>
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-6 col-lg-6 headingprice"> 
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-5 col-lg-4">                    
+                                <div class="price-info-item">
+                                    <div class="key">
+                                        <p class="uppercase" id="country-name"></p>
+                                    </div>
+                                    <div class="value">
+                                        <p id="price-avg-per-month"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
             </div>
-            
-            <div class="price-info-item">
-                <div class="key">
-                    <span id="country-name-2"></span>
-                </div>
-                <div class="value">
-                    <span id="price-avg-per-month-2"></span>
-                </div>
-            </div>
-            
-            <div class="price-info-item">
-                <div class="key">
-                    <span id="country-name-3"></span>
-                </div>
-                <div class="value">
-                    <span id="price-avg-per-month-3"></span>
-                </div>
-            </div>            
 
-            <div class="price-info-item">
-                <div class="key">
-                    <span id="country-name-4"></span>
-                </div>
-                <div class="value">
-                    <span id="price-avg-per-month-4"></span>
-                </div>
-            </div>
+            <section class="innersection">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-10 text-center">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-5 text-center">
+                                    <div class="col-xs-12 col-sm-12 text-center">
+                                        <p>Main Hub being a net Exporter or Importer</p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 text-center" id="impexp-total-per-month"></div>
+                                </div>
+                                <div class="col-xs-12 col-sm-5 text-center">
+                                    <div class="col-xs-12 col-sm-12 text-center">
+                                        <p>Main Hub Exporting and Importing percentages with neighbouring countries</p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 text-center" id="impexp-total-per-month-country"></div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </section>
+        </section>
+        
+        <section class="outersection">
+            <div class="container">
+                <div class="row"> 
+                    <div class="col-xs-12 col-sm-12">                 
+                        <h3>Transmission Daily</h3>
+                    </div>    
+                    
+                    <div class="col-xs-12 col-sm-6 col-lg-6 headingprice">
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-5 col-lg-4">
+                                <div class="price-info-item">
+                                    <div class="key">
+                                        <p class="uppercase" id="country-name-1"></p> 
+                                    </div>
+                                    <div class="value">
+                                        <p id="price-avg-per-month-1"></p> 
+                                    </div>
+                                </div>
+                                
+                                <div class="price-info-item">
+                                    <div class="key">
+                                        <p class="uppercase" id="country-name-2"></p>
+                                    </div>
+                                    <div class="value">
+                                        <p id="price-avg-per-month-2"></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="price-info-item">
+                                    <div class="key">
+                                        <p class="uppercase" id="country-name-3"></p>
+                                    </div>
+                                    <div class="value">
+                                        <p id="price-avg-per-month-3"></p>
+                                    </div>
+                                </div>            
+                    
+                                <div class="price-info-item">
+                                    <div class="key">
+                                        <p class="uppercase" id="country-name-4"></p>
+                                    </div>
+                                    <div class="value">
+                                        <p id="price-avg-per-month-4"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div>    
+            </div> 
 
-            <div>
-                <div id="prices-composite-chart"></div>        
-                <div id="ntc-scatter-chart"></div>                
-            </div>
-            
-            <div>
-                <div id="cb-composite-chart"></div>                
-            </div>
-
-        </div>         
-    </section>
+            <section class="innersection">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-9 text-center">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-10 text-center">
+                                    <p class="daily-paragraph">Day Ahead Market Clearing Prices</p>
+                                </div>
+                                <div class="col-xs-12 col-sm-10" id="prices-composite-chart"></div>
+                            </div>    
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-9 text-center">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-10 text-center">
+                                    <p class="daily-paragraph">Day Ahead Capacity Auction Available (<span><i class="fa fa-plus" aria-hidden="true"></i></span> shows Exports, 
+                                    <span><i class="fa fa-minus" aria-hidden="true"></i></span> shows Imports)</p>
+                                </div> 
+                                 <div class="col-xs-12 col-sm-10" id="ntc-scatter-chart"></div>
+                            </div>    
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-9 text-center">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-10 text-center">
+                                    <p class="daily-paragraph">Day Ahead Power Scheduled (<span><i class="fa fa-plus" aria-hidden="true"></i></span> shows Exports, 
+                                    <span><i class="fa fa-minus" aria-hidden="true"></i></span> shows Imports)</p>
+                                </div> 
+                                <div class="col-xs-12 col-sm-10" id="cb-composite-chart"></div> 
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
     </main>
     
 </body>

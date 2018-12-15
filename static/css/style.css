@@ -1,4 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
-.daily {
-    clear: left;
-} 
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(230,230,230,0.23), rgba(255,255,255,0.15);
+}
+
+/* Header */
+
+.slideup, .slidedown {
+    max-height: 0; 
+    overflow-y: hidden;
+    -webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
+}
+        
+.slidedown {            
+    max-height: 420px;
+    max-width: 100em;
+}  
+
+/* Main */
+
+.outersection {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 15px 0;
+}   
+
+.headingprice {
+    padding-top: 5px;
+}
+
+.innersection {
+    padding-top: 8px;
+}
+
+.price-info-item {
+    margin-bottom:5px; 
+    display:block;
+    clear:both;
+}
+
+.price-info-item .key,
+.price-info-item .value {
+    padding-right: 0px;
+}
+
+.price-info-item .key p,
+.price-info-item .value p {
+    margin:0;
+}
+
+.price-info-item .key {
+    display:inline-block;
+    width:30%;
+    margin-right:0px;
+    padding-top:2px;
+    vertical-align:top;
+}
+
+.price-info-item .key p {
+    font-weight:700;
+}
+
+.price-info-item .value {
+    display:inline-block;
+    position:relative;
+    width:60%;
+}
+
+
+.dc-chart .pie-slice {
+    fill: black;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Main Daily */
+
+
+@media screen and (max-width:767px) {
+  .daily-paragraph { 
+       margin-left: 30%;
+       width: 100%;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .daily-paragraph { 
+      margin-left: 30%;
+      width: 80%;
+  }
+}
