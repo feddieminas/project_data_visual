@@ -99,13 +99,13 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-5 text-center">
                                     <div class="col-xs-12 col-sm-12 text-center">
-                                        <p>Main Hub being a net Exporter or Importer</p>
+                                        <p class="monthly-paragraph">Main Hub being a net Exporter or Importer</p>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 text-center" id="impexp-total-per-month"></div>
                                 </div>
                                 <div class="col-xs-12 col-sm-5 text-center">
                                     <div class="col-xs-12 col-sm-12 text-center">
-                                        <p>Main Hub Exporting and Importing percentages with neighbouring countries</p>
+                                        <p class="monthly-paragraph">Main Hub Exporting and Importing percentages with neighbouring countries</p>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 text-center" id="impexp-total-per-month-country"></div> 
                                 </div>
@@ -169,42 +169,47 @@
 
             <section class="innersection">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-9 text-center">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-10 text-center">
-                                    <p class="daily-paragraph">Day Ahead Market Clearing Prices</p>
-                                </div>
-                                <div class="col-xs-12 col-sm-10" id="prices-composite-chart"></div>
-                            </div>    
+                    
+                    <div class="flexme">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-9 text-center">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-10 text-center">
+                                        <p class="daily-paragraph">Day Ahead Market Clearing Prices</p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-10 daily-div-chart" id="prices-composite-chart"></div>
+                                </div>    
+                            </div>
                         </div>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-9 text-center">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-10 text-center">
-                                    <p class="daily-paragraph">Day Ahead Capacity Auction Available (<span><i class="fa fa-plus" aria-hidden="true"></i></span> shows Exports, 
-                                    <span><i class="fa fa-minus" aria-hidden="true"></i></span> shows Imports)</p>
-                                </div> 
-                                 <div class="col-xs-12 col-sm-10" id="ntc-scatter-chart"></div>
-                            </div>    
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-9 text-center">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-10 text-center">
+                                        <p class="daily-paragraph">Day Ahead Capacity Auction Available (<span><i class="fa fa-plus" aria-hidden="true"></i></span> shows Exports, 
+                                        <span><i class="fa fa-minus" aria-hidden="true"></i></span> shows Imports)</p>
+                                    </div> 
+                                     <div class="col-xs-12 col-sm-10 daily-div-chart" id="ntc-scatter-chart"></div>
+                                </div>    
+                            </div>
                         </div>
-                    </div>
+                    </div>                         
                     
                     <div class="row">
                         <div class="col-xs-12 col-sm-9 text-center">
-                            <div class="row">
+                            <div class="row dschedmarg">
                                 <div class="col-xs-12 col-sm-10 text-center">
                                     <p class="daily-paragraph">Day Ahead Power Scheduled (<span><i class="fa fa-plus" aria-hidden="true"></i></span> shows Exports, 
                                     <span><i class="fa fa-minus" aria-hidden="true"></i></span> shows Imports)</p>
                                 </div> 
-                                <div class="col-xs-12 col-sm-10" id="cb-composite-chart"></div> 
+                                <div class="col-xs-12 col-sm-10 daily-div-chart" id="cb-composite-chart"></div> 
                             </div>    
                         </div>
                     </div>
+                    
                 </div>
             </section>
+            
         </section>
     </main>
     
