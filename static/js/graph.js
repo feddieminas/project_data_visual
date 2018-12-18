@@ -11,8 +11,8 @@ $(document).ready(function() {
     });
     
     $("#countchg").click(function(){
-        var selectedText = $("#selCountry").find("option:selected").text();
-        var selectedValue = $("#selCountry").val();
+        const selectedText = $("#selCountry").find("option:selected").text(); 
+        const selectedValue = $("#selCountry").val(); 
         
         if (selectedValue == "SK : Main") {
             $("#country-name-4").css({'visibility': 'hidden'});
@@ -80,21 +80,21 @@ queue()
     }        
 
     function someFileAdjs(arrayData) {
-        let timer=24;
+        const timer=24; 
         arrayData.forEach(function(d){
-            var dd = d.DateTime;
+            const dd = d.DateTime; 
             
-            var helpY = parseInt(dd.substr(0,4));var helpM = parseInt(dd.substr(5,2));            
-            var helpD = parseInt(dd.substr(8,2));var helpH = parseInt(dd.substr(11,2));
+            const helpY = parseInt(dd.substr(0,4));const helpM = parseInt(dd.substr(5,2));           
+            const helpD = parseInt(dd.substr(8,2));const helpH = parseInt(dd.substr(11,2)); 
             
-            var ddate = new Date(helpY,helpM-1,helpD,helpH,0,0);
+            const ddate = new Date(helpY,helpM-1,helpD,helpH,0,0); 
             
             ddate.setHours(+ddate.getHours()+(timer/8));
             
             d.Year = parseInt(ddate.getFullYear());
             d.Month = parseInt(ddate.getMonth()+1);
             
-            var myhourf = ddate.getHours();
+            const myhourf = ddate.getHours();
                     
             switch (myhourf) {
                 case 0:
@@ -122,7 +122,7 @@ queue()
         return arrayData;
     }        
     
-    var dataMD;
+    let dataMD; 
     
     class MyData {
       constructor(data) {
@@ -135,11 +135,10 @@ queue()
     }    
     
     function merging(error, priceData, schedCData, tranferData) { 
-            
             priceData = someFileAdjs(priceData); schedCData = someFileAdjs(schedCData); 
             tranferData = someFileAdjs(tranferData);
             
-            var myMergeData = d3.merge([priceData, schedCData, tranferData]);
+            let myMergeData = d3.merge([priceData, schedCData, tranferData]); 
     
             dataMD = new MyData(myMergeData);
     
@@ -147,21 +146,21 @@ queue()
     }
     
     function retDropdownVal(id) {
-        var e = document.getElementById(id);
-        var strOpt = e.options[e.selectedIndex].value;
-        var myoption = strOpt.length > 2 ? strOpt.substr(0,2): strOpt;
+        const e = document.getElementById(id); 
+        const strOpt = e.options[e.selectedIndex].value; 
+        const myoption = strOpt.length > 2 ? strOpt.substr(0,2): strOpt; 
         return myoption;
     }
     
             
     function data_preprocess() {
-        var myCFData = [];
-        var myNeighbors;
+        let myCFData = []; 
+        let myNeighbors; 
             
         function change_data() {
-            var myCountry= retDropdownVal("selCountry");
+            const myCountry= retDropdownVal("selCountry"); 
                 
-            var myMergeData = dataMD.ret(); 
+            let myMergeData = dataMD.ret(); 
                 
             myNeighbors = (d3.map(myMergeData, function(d){
                 if(((d.OutMapCode == myCountry || d.InMapCode == myCountry) && !(d.OutMapCode == myCountry && d.InMapCode == myCountry))) {
@@ -169,7 +168,7 @@ queue()
                 }
             }).keys());
                 
-            var index = myNeighbors.indexOf("undefined");
+            const index = myNeighbors.indexOf("undefined"); 
                 if (index > -1) {
                     myNeighbors.splice(index, 1);
             }
@@ -207,10 +206,10 @@ queue()
     }
     
     function show_month_selector(ndx) {
-        var dim = ndx.dimension(dc.pluck('Month'));
-        var group = dim.group();
+        const dim = ndx.dimension(dc.pluck('Month')); 
+        const group = dim.group(); 
             
-        var select = dc.selectMenu('#month-selector')
+        let select = dc.selectMenu('#month-selector') 
             .dimension(dim)
             .group(group)
             .render();
@@ -221,24 +220,24 @@ queue()
     }  
     
     function arrCountr(myCFData, myCountry) {
-        var arrayCountry = [];
+        let arrayCountry = []; 
         arrayCountry = d3.map(myCFData, function(d){return d.OutMapCode;}).keys();
         arrayCountry.splice(arrayCountry.indexOf(myCountry), 1 );
         return arrayCountry;
     }    
     
     function makeGraphs(myCFData) {
-            var ndx = crossfilter(myCFData);
+            let ndx = crossfilter(myCFData); 
             
             show_month_selector(ndx);
         
             ////////
             
-            var myCountry = retDropdownVal("selCountry");
+            const myCountry = retDropdownVal("selCountry"); 
             document.getElementById('country-name').innerHTML = myCountry;
             show_p_number(ndx,myCountry,"#price-avg-per-month");
 
-            var arrayCountry = [];
+            let arrayCountry = []; 
             arrayCountry = arrCountr(myCFData, myCountry);
          
             for (var i=0; i<arrayCountry.length ;i++) {
@@ -284,9 +283,9 @@ queue()
     
     function show_monthly_pie(ndx, myCFData) { 
         
-        var myCountry = retDropdownVal("selCountry");
+        const myCountry = retDropdownVal("selCountry"); 
         
-        var month_dim = ndx.dimension(function(d) {return [d.Month,d.Type]; });
+        let month_dim = ndx.dimension(function(d) {return [d.Month,d.Type]; }); 
         
         function sumByImpExp (dimension, mapCode) {
             return dimension.group().reduce(
@@ -316,12 +315,12 @@ queue()
                 );
             }           
             
-        var total_impexp_per_country = sumByImpExp(month_dim,myCountry);
+        let total_impexp_per_country = sumByImpExp(month_dim,myCountry); 
         total_impexp_per_country = monthly_fix_bins(total_impexp_per_country);       
             
-        var f = d3.format(".2f");    
+        const f = d3.format(".2f");    
         
-        var dictEI ={"E": "Exp","I": "Imp"};    
+        const dictEI ={"E": "Exp","I": "Imp"};    
             
         dc.pieChart('#impexp-total-per-month') 
             .width(300)
@@ -344,7 +343,7 @@ queue()
         
     function show_monthly_stack(ndx, myCFData) { 
         
-        var myCountry = retDropdownVal("selCountry");
+        const myCountry = retDropdownVal("selCountry"); 
             
         function rankByImpExp (dimension, mapCode) {
             return dimension.group().reduce(
@@ -387,19 +386,19 @@ queue()
                 );
             }             
         
-            month_dim = ndx.dimension(function(d) {return [d.Month,d.Type]; });
+            let month_dim = ndx.dimension(function(d) {return [d.Month,d.Type]; }); 
             
-            var arrayCountry = [];
+            let arrayCountry = []; 
             arrayCountry = arrCountr(myCFData, myCountry);
             
-            mygroup = rankByImpExp(month_dim, arrayCountry[0]);
+            let mygroup = rankByImpExp(month_dim, arrayCountry[0]); 
             mygroup = monthly_fix_bins(mygroup,"Y");
             
             var f = d3.format(".2f");
             
-            var dictEI ={"E": "Exports","I": "Imports"};   
+            const dictEI ={"E": "Exports","I": "Imports"};    
             
-            var StackChart = dc.barChart("#impexp-total-per-month-country")
+            let StackChart = dc.barChart("#impexp-total-per-month-country") 
                 .width(350)
                 .height(250) 
                 .dimension(month_dim)
@@ -444,9 +443,9 @@ queue()
     
     function show_p_number(ndx,myCountry,selectedId) {
             
-        month_dim = ndx.dimension(function(d) {return [d.Month,d.Type,d.Service]; });
+        let month_dim = ndx.dimension(function(d) {return [d.Month,d.Type,d.Service]; }); 
         
-        var average_price_by_hub = month_dim.groupAll().reduce(  
+        let average_price_by_hub = month_dim.groupAll().reduce(   
                 function (p,v) {
                     if(v.OutMapCode == myCountry && v.Service == "Pr") { 
                             p.count++;
@@ -485,13 +484,13 @@ queue()
     ///// Transmission Daily /////
     
     function arrMonthRet() {
-        var select = d3.select('#month-selector');
-        var s = select.select(".dc-select-menu")[0];
+        let select = d3.select('#month-selector'); 
+        let s = select.select(".dc-select-menu")[0]; 
         
-        var arrMonths = [];
+        let arrMonths = []; 
         for (var i=0;i<s[0].childNodes.length;i++) {
             if(s[0].childNodes[i].value !== "") {
-                var val = parseInt(s[0].childNodes[i].value);
+                let val = parseInt(s[0].childNodes[i].value); 
                 arrMonths.push(val);  
             }
         }
@@ -563,9 +562,9 @@ queue()
     
     function show_day_P_composite_chart(ndx,myCFData) {
             
-        var myCountry = retDropdownVal("selCountry");
+        const myCountry = retDropdownVal("selCountry"); 
         
-        day_dim = ndx.dimension(function(d) {return [d.Month,d.Day,d.Type,d.Service]; });
+        let day_dim = ndx.dimension(function(d) {return [d.Month,d.Day,d.Type,d.Service]; }); 
             
         function prices_by_day (dimension, mapCode) {
             return dimension.group().reduce(
@@ -595,38 +594,38 @@ queue()
                     }        
         )} 
 
-        var arrMonths = [];
+        let arrMonths = []; 
         arrMonths = arrMonthRet();
         
-        var colorCountryDict = {};
+        let colorCountryDict = {}; 
         colorCountryDict = countColor();
         
-        var arrayCountry = [];
+        let arrayCountry = []; 
         arrayCountry = arrCountr(myCFData, myCountry);
             
-        var compositeChart = dc.compositeChart('#prices-composite-chart');
+        let compositeChart = dc.compositeChart('#prices-composite-chart'); 
         
-        var countDict = {}; var composeLines = [];
+        let countDict = {}; let composeLines = []; 
  
-        var f = d3.format(".2f");
-        var minPrice = 1000; var maxPrice = 0;
-        var mapDash = {8: 5, 9: 0};
+        const f = d3.format(".2f"); 
+        let minPrice = 1000; let maxPrice = 0; 
+        const mapDash = {8: 5, 9: 0}; 
  
         for (var i=0; i < arrayCountry.length; i++) {
             for (var j=0;j<arrMonths.length;j++) {
-                var countryPerDay = daily_fix_bins(prices_by_day(day_dim,arrayCountry[i]),arrMonths[j],"N");
+                let countryPerDay = daily_fix_bins(prices_by_day(day_dim,arrayCountry[i]),arrMonths[j],"N"); 
                 
-                var order = countryPerDay.all().map(function(d) {
+                let order = countryPerDay.all().map(function(d) { 
                     return [d.key[0],d.key[1],d.key[2]]; 
                 });
                 
                 order = sort_order(order);
                 
-                var sorted_group = sort_group(countryPerDay, order);
+                let sorted_group = sort_group(countryPerDay, order); 
                 
-                var minVal = Math.min.apply(Math, sorted_group.all().map(function(o) { return o.value; }));
+                let minVal = Math.min.apply(Math, sorted_group.all().map(function(o) { return o.value; })); 
                 minVal = parseFloat(parseFloat(minVal,10).toFixed(0));
-                var maxVal = Math.max.apply(Math, sorted_group.all().map(function(o) { return o.value; }));
+                let maxVal = Math.max.apply(Math, sorted_group.all().map(function(o) { return o.value; })); 
                 maxVal = parseFloat(parseFloat(maxVal,10).toFixed(0));
                 
                 if(maxVal > maxPrice) {maxPrice=maxVal;}
@@ -665,8 +664,8 @@ queue()
             .on('renderlet', function(chart) { 
                 chart.select('.x-axis-label').attr("transform", "translate(" + 296 + "," + 240 + ")");
                 
-                var c = chart.selectAll(".dc-legend").selectAll(".dc-legend-item").selectAll("text");
-                var mylength = c.length; 
+                let c = chart.selectAll(".dc-legend").selectAll(".dc-legend-item").selectAll("text"); 
+                let mylength = c.length;
                 
                 if(mylength == (arrayCountry.length*2)) {
                     for (var i=0; i < mylength; i++) {
@@ -731,39 +730,38 @@ queue()
     )}    
     
     function show_day_NTC_scatter_chart(ndx,myCFData) {
-        var myCountry = retDropdownVal("selCountry");
+        const myCountry = retDropdownVal("selCountry"); 
         
-        var day_dim = ndx.dimension(function(d) {return [d.Month,d.Day,d.Type]; }); 
+        let day_dim = ndx.dimension(function(d) {return [d.Month,d.Day,d.Type]; }); 
         
-        var colorCountryDict = {};
+        let colorCountryDict = {}; 
         colorCountryDict = countColor();
         
-        var countryColors = d3.scale.ordinal() 
+        let countryColors = d3.scale.ordinal() 
             .domain(Object.keys(colorCountryDict))
             .range(Object.values(colorCountryDict));            
         
-        var arrayCountry = [];
+        let arrayCountry = []; 
         arrayCountry = arrCountr(myCFData, myCountry);
         
-        var compositeChart = dc.compositeChart('#ntc-scatter-chart');
+        let compositeChart = dc.compositeChart('#ntc-scatter-chart'); 
         
-        var countDict = {}; var composeLines = [];
+        let countDict = {}; let composeLines = []; 
+        const f = d3.format(".2f"); 
             
         for (var i=0; i < arrayCountry.length; i++) {
-            var countryPerDay = qties_by_day(day_dim,myCountry,arrayCountry[i],"Tr");
+            let countryPerDay = qties_by_day(day_dim,myCountry,arrayCountry[i],"Tr");
             countryPerDay = daily_fix_bins(countryPerDay,'',"Y");
             
-            var order = countryPerDay.all().map(function(d) {
+            let order = countryPerDay.all().map(function(d) { 
                 return [d.key[0],d.key[1],d.key[2]]; 
             });
             
             order = sort_order(order);
             
-            var sorted_group = sort_group(countryPerDay, order);
+            let sorted_group = sort_group(countryPerDay, order); 
             
             countDict[arrayCountry[i]] = sorted_group;
-            
-            var f = d3.format(".2f");
              
             composeLines.push(dc.scatterPlot(compositeChart)  
                                 .colors(colorCountryDict[arrayCountry[i]])
@@ -808,43 +806,43 @@ queue()
     
     function show_CB_composite_chart(ndx,myCFData) {
         
-        var myCountry = retDropdownVal("selCountry");
+        const myCountry = retDropdownVal("selCountry"); 
         
-        day_dim = ndx.dimension(function(d) {return [d.Month,d.Day,d.Type]; });
+        let day_dim = ndx.dimension(function(d) {return [d.Month,d.Day,d.Type]; }); 
         
-        var arrMonths = [];
+        let arrMonths = []; 
         arrMonths = arrMonthRet();
         
         arrMonths.push(["E","I"]);
         
-        var colorCountryDict = {};
+        let colorCountryDict = {}; 
         colorCountryDict = countColor();
         
-        var arrayCountry = [];
+        let arrayCountry = []; 
         arrayCountry = arrCountr(myCFData, myCountry);
             
-        var compositeChart = dc.compositeChart('#cb-composite-chart');
+        let compositeChart = dc.compositeChart('#cb-composite-chart'); 
         
-        var countDict = {}; var composeLines = [];
+        let countDict = {}; let composeLines = []; 
  
-        var f = d3.format(".2f"); 
+        const f = d3.format(".2f"); 
  
-        var mapDash = {8: 5, 9: 0};
+        const mapDash = {8: 5, 9: 0}; 
  
         for (var i=0; i < arrayCountry.length; i++) {
             for (var j=0; j < arrMonths.length; j++) {
                 for (var k=0; k < 2; k++) {
-                    var countryPerDay = daily_fix_bins(qties_by_day(day_dim,myCountry,arrayCountry[i],"Co"),arrMonths[j],"S",arrMonths[2][k]);
+                    let countryPerDay = daily_fix_bins(qties_by_day(day_dim,myCountry,arrayCountry[i],"Co"),arrMonths[j],"S",arrMonths[2][k]); 
                     
                     if(countryPerDay.all().length == 0) {continue;}
                     
-                    var order = countryPerDay.all().map(function(d) {
+                    let order = countryPerDay.all().map(function(d) { 
                         return [d.key[0],d.key[1],d.key[2]]; 
                     });
                     
                     order = sort_order(order);
                     
-                    var sorted_group = sort_group(countryPerDay, order);
+                    let sorted_group = sort_group(countryPerDay, order); 
                     
                     countDict[arrayCountry[i]] = sorted_group;  
                     
@@ -877,11 +875,12 @@ queue()
             .legend(dc.legend().x(60).y(228).itemHeight(13).gap(1).horizontal(true).legendWidth(560))  
             
             .on('renderlet', function(chart) { 
-                var c = chart.selectAll(".dc-legend").selectAll(".dc-legend-item");
-                var mylength = c[0].length;
+                let c = chart.selectAll(".dc-legend").selectAll(".dc-legend-item"); 
+                let mylength = c[0].length; 
                 
-                var myarrlength = arrayCountry.length;
-                if(myarrlength == 3) {chart.select('.dc-legend').attr("transform", "translate(" + 60 + "," + 160 + ")");} 
+                let myarrlength = arrayCountry.length; 
+                
+                if(myarrlength == 3 && (mylength == (myarrlength*4))) {chart.select('.dc-legend').attr("transform", "translate(" + 60 + "," + 160 + ")");} 
                 
                 if(mylength == (myarrlength*4)) {
                     for (var i=1; i<mylength;i+=2) {c[0][i].remove();}
