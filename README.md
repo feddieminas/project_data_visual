@@ -67,19 +67,19 @@ A mockup frame of the website, one could find it at the attached pdf file at the
 
 Currently, the website provides with a general but on point overview of the subject. Additional plans to be implemented in the future would be :
 
-- Display Hourly (per day and hour) graphs and table data.
+- Restructure info and broaden your dimension to [Month, Day, Type, Service, Country] from current [Month, Day, Type, Service] to enable crossfilter flexibility on for ex. monthly stack bar chart.  
+
+- Table data to Render on a different page with format [Country, Month, Day, Type, Quantity/Price].
 
 - On a broad basis, create four tabs on Navigation bar (Favorites, Load, Generation, Transmission, Balancing) and insert related graphs on each other section. 
 
 ### Features Left to Implement
 
+- Q3 months are July, August and September. We do not display information for July for one to compare all the quarter.
+
 - OTE regions are composed of four regions. We only display data for two (CZ, SK) and we miss displaying the other two (HU, RO). 
 
 - Physical Schedules graph to add at the bottom (or at the right on a Desktop approach) of the Commercial Schedules Graph on daily section.
-
-- Table data to Render on a different page with format [Country, Month, Day, Type, Quantity/Price].
-
-- Q3 months are July, August and September. We do not display information for July for one to compare all the quarter.
 
 ## Technologies Used
 
@@ -119,17 +119,10 @@ Currently, the website provides with a general but on point overview of the subj
 
 ## Testing
 
-- Used Jasmine to test :
+- Used Jasmine framework to test :
   - My DateTime column parsed from csv is read as string and methods concerning string types are functioning to produce my object Date type.
   - The array country outer function to display the main hub's neighbouring countries has all the objectContaining.
   - A custom reduce inner function (third graph daily price composite chart) calculation of a country's daily average number conforms to its data title on the chart.     
-
-- Used Chrome Dev tools :
-  - libraries that are hooked
-  - array information printed to visually see my data if applied correctly
-    - Cross check all data transform per day and hour correctly with [ote-cr.cz](https://www.ote-cr.cz/en/short-term-markets/electricity/market-coupling)
-  - graphs render correctly and renderlet trigger events are applied accordingly
-  - responsive design 
 
 ----
 
@@ -139,15 +132,13 @@ Encountered issues:
 
 - D3 domain and scales to set on dc.js graphs.
 
+- Insert custom data titles on composite dc.js graphs. 
+
 ## Deployment
 
-I deployed the project on Cloud9 platform. I used Git & GitHub for version control. I maintained the master as the only git branch. 
-At the branch, structurally, I had the folder called static where I stored my CSS folder (relevant CSS libs and stylesheet (style.css)) and JS folder (relevant JS libs and own render graphs and jquery scripts (graph.js)). 
-The number of html files is one (index.html). Finally a tests folder had been created concerning some Jasmine testing.
+I deployed the project on [Cloud 9 Platform](https://ide.c9.io/feddie27/project_data_visualisation).
 
-Running the code locally : The data is already downloaded and being static. Therefore one needs to visualise it relative to the Hub one will choose (CZ, SK provided). At the top, there is info that can be
-displayed about how to examine/read the page. Automatically the first page loaded is the CZ (Czech Republic). If one wants to switch to SK (Slovakia), there is the Hub Selector dropdown and display button. Once
-info is getting displayed, graphs with cross filtering apply and a helper dropdown button to filter per month.
+Worked on Google Chrome Version 71 and Safari Version 10.1.2. 
 
 ## Credits
 

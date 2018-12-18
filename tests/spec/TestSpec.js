@@ -6,6 +6,10 @@ describe("MyDateTimeFix string param to Date result format", function() {
         mDTF = new MyDateTimeFix;
     });
 
+    it("function should exist", function() {
+        expect(MyDateTimeFix).toBeDefined();
+    });
+
     describe("Check Date Type function", function() {
         it("should return type object date when day is two digit 31", function() {
             mDTF.someFileAdjs("2018-07-31 22:00:00.000");
@@ -34,6 +38,10 @@ describe("arrCountry custom function map showing neigbouring countries", functio
         this.result = new arrCountr("CZ"); 
      });
 
+    it("function should exist", function() {
+        expect(arrCountr).toBeDefined();
+    });
+
     it("should return true as it is the main hub not neighbour", function() {
         expect(this.result).not.toEqual(jasmine.objectContaining(["CZ"]));
     });
@@ -53,6 +61,10 @@ describe("show_day_P_composite_chart custom reduce function Price of SK Month 9 
     beforeEach(function() {
         this.value = new p_composite_chart("SK");
     });
+    
+    it("function should exist", function() {
+        expect(p_composite_chart).toBeDefined();
+    });    
     
     it("should return true that 24 hours are counted. should return true that the average of SK for that day equals the data title of the chart", function() {
         expect(this.value.count).toEqual(24);

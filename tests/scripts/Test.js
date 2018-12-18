@@ -1,17 +1,17 @@
 
 ///////////
 
-MyDateTimeFix = function() {
+const MyDateTimeFix = function() {
     this.dd = "";
 };
 
 MyDateTimeFix.prototype.someFileAdjs = function(DateTimeStr) {
     try {
-        var tempDD = DateTimeStr;
-        var helpY = parseInt(tempDD.substr(0,4));var helpM = parseInt(tempDD.substr(5,2));            
-        var helpD = parseInt(tempDD.substr(8,2));var helpH = parseInt(tempDD.substr(11,2));
+        const tempDD = DateTimeStr;
+        const helpY = parseInt(tempDD.substr(0,4));const helpM = parseInt(tempDD.substr(5,2));            
+        const helpD = parseInt(tempDD.substr(8,2));const helpH = parseInt(tempDD.substr(11,2));
                 
-        var ddate = new Date(helpY,helpM-1,helpD,helpH,0,0);
+        const ddate = new Date(helpY,helpM-1,helpD,helpH,0,0);
             
         if ((ddate instanceof Date) && !isNaN(ddate)) {
             this.dd = '[object Date]';            
@@ -25,9 +25,9 @@ MyDateTimeFix.prototype.someFileAdjs = function(DateTimeStr) {
 ///////////
 
 function arrCountr(myCountry) {
-    var myCFData =[];
+    let myCFData =[];
     
-    var d1 = {
+    const d1 = {
         Day: 1,
         Hour: 17,
         InMapCode: "CZ",
@@ -39,7 +39,7 @@ function arrCountr(myCountry) {
         Year: 2018
     };
         
-    var d2 = {
+    const d2 = {
         Day: 2,
         Hour: 15,
         InMapCode: "CZ",
@@ -51,7 +51,7 @@ function arrCountr(myCountry) {
         Year: 2018
     };
         
-    var d3 = {
+    const d3 = {
         Day: 1,
         Hour: 10,
         InMapCode: "CZ",
@@ -63,7 +63,7 @@ function arrCountr(myCountry) {
         Year: 2018
     }; 
         
-    var d4 = {
+    const d4 = {
         Day: 12,
         Hour: 4,
         InMapCode: "DE",
@@ -75,7 +75,7 @@ function arrCountr(myCountry) {
         Year: 2018
     };          
     
-    var d5 = {
+    const d5 = {
         Day: 3,
         Hour: 4,
         InMapCode: "CZ",
@@ -89,8 +89,7 @@ function arrCountr(myCountry) {
     
     myCFData.push(d1,d2,d3,d4,d5);
     
-    var arrayCountry = [];
-    arrayCountry = myCFData.map(function(d) {
+    let arrayCountry = myCFData.map(function(d) {
        return d.OutMapCode;
     });    
     arrayCountry.splice(arrayCountry.indexOf(myCountry), 1 );
@@ -102,7 +101,7 @@ function arrCountr(myCountry) {
 
 function p_composite_chart(mapCode) {
 
-    var dimension=[{
+    let dimension=[{
         Day: 15,
         Hour: 1,
         InMapCode: "SK",
@@ -345,7 +344,7 @@ function p_composite_chart(mapCode) {
         Year: 2018}];
 
         function prices_by_day (dimension, mapCode) {
-            p = { count: 0, total: 0, average: 0};
+            let p = { count: 0, total: 0, average: 0};
         
             dimension.forEach(function(v){
                 if(v.OutMapCode == mapCode && v.Service == "Pr") { 
