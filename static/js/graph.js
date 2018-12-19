@@ -413,8 +413,8 @@ queue()
                 
                 .title(function(d,i) {
                     const mytitle = arrayCountry[k] + " " + dictEI[d.key[1]] + ": " + ((f(d.value.match) / f(d.value.total)) * 100).toFixed(2) + " %"; 
-                    if (i==3) {k++}
-                    if(k==arrayCountry.length) {k=0}
+                    if (i==3) {k++;}
+                    if(k==arrayCountry.length) {k=0;}
                     return mytitle; 
                 })
                 .renderTitle(true)    
@@ -431,7 +431,7 @@ queue()
                 for (let i = 1; i < arrayCountry.length; i++) {
                     mygroup = rankByImpExp(month_dim, arrayCountry[i]);
                     mygroup = monthly_fix_bins(mygroup,"Y");
-                    StackChart.stack(mygroup, arrayCountry[i]) 
+                    StackChart.stack(mygroup, arrayCountry[i]); 
                 }
                 
                 StackChart.xAxis().tickFormat(function(d) { 
