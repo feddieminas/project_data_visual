@@ -136,7 +136,7 @@ Encountered issues:
 
 ## Deployment
 
-I deployed the project on [Cloud 9 Platform](https://ide.c9.io/feddie27/project_data_visualisation).
+I deployed the project on Cloud 9 Platform.
 
 Worked on Google Chrome Version 71 and Safari Version 10.1.2. 
 
